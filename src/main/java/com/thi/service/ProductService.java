@@ -44,44 +44,56 @@ public class ProductService implements IProductService {
 		return repository.findByName(name);
 	}
 
-	@Override
-	public void createProduct(String name,MultipartFile picture,float price,int category_id) throws IOException {
-		// TODO Auto-generated method stub
-		Path staticPath = Paths.get("static");
-        Path imagePath = Paths.get("images");
-        if (!Files.exists(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath))) {
-            Files.createDirectories(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath));
-        }
-        Path file = CURRENT_FOLDER.resolve(staticPath).resolve(imagePath).resolve(picture.getOriginalFilename());
-        try (OutputStream os = Files.newOutputStream(file)) {
-            os.write(picture.getBytes());
-        }
-        Product product = new Product();
-        product.setName(name);
-        product.setPrice(price);
-        product.setCategory_id(category_id);
-        product.setPicture(imagePath.resolve(picture.getOriginalFilename()).toString());
-        repository.save(product);
-	}
+//	@Override
+//	public void createProduct(String name,MultipartFile picture,float price,int category_id) throws IOException {
+//		// TODO Auto-generated method stub
+//		Path staticPath = Paths.get("static");
+//        Path imagePath = Paths.get("images");
+//        if (!Files.exists(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath))) {
+//            Files.createDirectories(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath));
+//        }
+//        Path file = CURRENT_FOLDER.resolve(staticPath).resolve(imagePath).resolve(picture.getOriginalFilename());
+//        try (OutputStream os = Files.newOutputStream(file)) {
+//            os.write(picture.getBytes());
+//        }
+//        Product product = new Product();
+//        product.setName(name);
+//        product.setPrice(price);
+//        product.setCategory_id(category_id);
+//        product.setPicture(imagePath.resolve(picture.getOriginalFilename()).toString());
+//        repository.save(product);
+//	}
 
+//	@Override
+//	public void updateProduct(int id, String name,MultipartFile picture,float price,int category_id) throws IOException {
+//		// TODO Auto-generated method stub
+//		Path staticPath = Paths.get("static");
+//        Path imagePath = Paths.get("images");
+//        if (!Files.exists(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath))) {
+//            Files.createDirectories(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath));
+//        }
+//        Path file = CURRENT_FOLDER.resolve(staticPath).resolve(imagePath).resolve(picture.getOriginalFilename());
+//        try (OutputStream os = Files.newOutputStream(file)) {
+//            os.write(picture.getBytes());
+//        }
+//        Product product = new Product();
+//        product.setId((short) id);
+//        product.setName(name);
+//        product.setPrice(price);
+//        product.setCategory_id(category_id);
+//        product.setPicture(imagePath.resolve(picture.getOriginalFilename()).toString());
+//		repository.saveAndFlush(product);
+//	}
+	
 	@Override
-	public void updateProduct(int id, String name,MultipartFile picture,float price,int category_id) throws IOException {
-		// TODO Auto-generated method stub
-		Path staticPath = Paths.get("static");
-        Path imagePath = Paths.get("images");
-        if (!Files.exists(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath))) {
-            Files.createDirectories(CURRENT_FOLDER.resolve(staticPath).resolve(imagePath));
-        }
-        Path file = CURRENT_FOLDER.resolve(staticPath).resolve(imagePath).resolve(picture.getOriginalFilename());
-        try (OutputStream os = Files.newOutputStream(file)) {
-            os.write(picture.getBytes());
-        }
-        Product product = new Product();
-        product.setId((short) id);
-        product.setName(name);
-        product.setPrice(price);
-        product.setCategory_id(category_id);
-        product.setPicture(imagePath.resolve(picture.getOriginalFilename()).toString());
+	public void createProduct(Product product) {
+		
+		repository.save(product);
+	}
+	
+	@Override
+	public void updateProduct(Product product) {
+		
 		repository.saveAndFlush(product);
 	}
 

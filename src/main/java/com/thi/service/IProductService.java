@@ -18,11 +18,15 @@ public interface IProductService {
 
 	public Product getProductByName(String name);
 
-	public void createProduct(String name,MultipartFile picture,float price,int category_id) throws IOException;
+//	public void createProduct(String name,MultipartFile picture,float price,int category_id) throws IOException;
+	
+	public void createProduct(Product product);
 
 //	public void updateProduct(short id, String newName);
+	
+	public void updateProduct(Product product);
 
-	public void updateProduct(int id, String name,MultipartFile picture,float price,int category_id) throws IOException;
+//	public void updateProduct(int id, String name,MultipartFile picture,float price,int category_id) throws IOException;
 
 	public void deleteProduct(short id);
 
