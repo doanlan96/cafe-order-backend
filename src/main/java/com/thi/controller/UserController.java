@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,12 +26,8 @@ public class UserController {
 	
 	@PostMapping(value = "/login")
 	public User login(@RequestBody LoginForm login_form) {
-//		User user =  service.login(login_form);
-//		if (user != null) {
-//			return user;
-//		} else {
-//			return null;
-//		}
+		User user =  service.login(login_form);
+
 		return service.login(login_form);
 	}
 	
@@ -41,5 +39,12 @@ public class UserController {
 		} else {
 		return new ResponseEntity<>("Register failed", HttpStatus.BAD_REQUEST);	
 		}
+	}
+	
+	@PutMapping(value = "/changepass/{id}")
+	public User changePassword(@PathVariable(name = "id") short id, @RequestBody User user) {
+		user.setId(id);
+		service.changePassword(user);
+		return user;
 	}
 }
