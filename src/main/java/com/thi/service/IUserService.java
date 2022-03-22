@@ -19,7 +19,7 @@ public interface IUserService {
 	public boolean register(RegisterForm register_form);
 
 	
-//	public void updateUser(User product);
+	public void changePassword(User user);
 //
 //
 //	public void deleteUser(short id);

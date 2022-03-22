@@ -59,6 +59,12 @@ public class UserService implements IUserService{
 		}
 		repository.save(new_user);
 		return true;
+	}
+
+	@Override
+	public void changePassword(User user) {
+		user.setPassword(CryptPasswordUtils.encrypt(user.getPassword()));
+		repository.saveAndFlush(user);
 	}		
 	
 }
