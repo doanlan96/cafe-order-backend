@@ -3,6 +3,7 @@ package com.thi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.thi.entity.ChangePassForm;
 import com.thi.entity.LoginForm;
 import com.thi.entity.RegisterForm;
 import com.thi.entity.User;
@@ -60,11 +61,36 @@ public class UserService implements IUserService{
 		repository.save(new_user);
 		return true;
 	}
+	
+	@Override
+	public boolean changePassword(short id, ChangePassForm form) {
+		User userr = new User();
+		userr = repository.findById(id).get();
+		if (userr == null) {
+			System.out.println("Alo");
+			return false;
+		}
+		String current_password = CryptPasswordUtils.decrypt(userr.getPassword());
+		if (current_password.equals(form.getOld_password())) {
+			User user = new User();
+			user.setId(id);
+			user.setFull_name(userr.getFull_name());
+			user.setUsername(userr.getUsername());
+			user.setRole(userr.getRole());
+			user.setPassword(CryptPasswordUtils.encrypt(form.getNew_password()));
+			repository.saveAndFlush(user);
+			return true;
+
+		} else {
+			return false;			
+		}
+
+	}
 
 	@Override
-	public void changePassword(User user) {
-		user.setPassword(CryptPasswordUtils.encrypt(user.getPassword()));
-		repository.saveAndFlush(user);
+	public User getUserByID(short id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).get();
 	}		
 	
 }

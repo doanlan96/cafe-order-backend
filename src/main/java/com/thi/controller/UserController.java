@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.thi.entity.ChangePassForm;
 import com.thi.entity.LoginForm;
 import com.thi.entity.RegisterForm;
 import com.thi.entity.User;
@@ -42,9 +43,12 @@ public class UserController {
 	}
 	
 	@PutMapping(value = "/changepass/{id}")
-	public User changePassword(@PathVariable(name = "id") short id, @RequestBody User user) {
-		user.setId(id);
-		service.changePassword(user);
-		return user;
+	public ResponseEntity<String> changePassword(@PathVariable(name = "id") short id, @RequestBody ChangePassForm form) {
+		boolean isOk = service.changePassword(id, form);
+		if (isOk) {
+		return new ResponseEntity<>("Change password successfully", HttpStatus.OK);
+		} else {
+		return new ResponseEntity<>("Change password failed", HttpStatus.BAD_REQUEST);	
+		}
 	}
 }
