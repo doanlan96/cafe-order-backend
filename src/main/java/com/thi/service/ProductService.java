@@ -27,9 +27,9 @@ public class ProductService implements IProductService {
 	private IProductRepository repository;
 	
 	@Override
-	public Page<Product> getAllProducts(Pageable pageable) {
+	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
-		return repository.findAll(pageable);
+		return repository.findAll();
 	}
 
 	@Override

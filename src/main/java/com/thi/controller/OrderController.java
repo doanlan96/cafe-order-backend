@@ -29,6 +29,16 @@ public class OrderController {
 		return service.getAllOrders();
 	}
 	
+	@GetMapping(value="/lastest")
+	public Orderr getLastestOrder() {
+		return service.getLastestOrder();
+	}
+	
+	@GetMapping(value = "/tableid/{id}")
+	public Orderr getOrderByTableIDWithState(@PathVariable(name = "id") int table_id) {
+		return service.findByTableIdWithState(table_id);
+	}	
+	
 	@GetMapping(value = "/{id}")
 	public Orderr getOrderByID(@PathVariable(name = "id") int id) {
 		return service.getOrderByID(id);

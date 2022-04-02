@@ -12,7 +12,7 @@ import com.thi.entity.Product;
 
 public interface IProductService {
 	
-	public Page<Product> getAllProducts(Pageable pageable);
+	public List<Product> getAllProducts();
 
 	public Product getProductByID(short id);
 

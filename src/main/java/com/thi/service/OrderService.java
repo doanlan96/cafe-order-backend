@@ -39,7 +39,7 @@ public class OrderService implements IOrderService {
 		order.setTime_in(current_time);
 		order.setTime_out(current_time);
 		order.setDay_month_year(current_date);
-		
+		order.setState("not paid");
 		repository.save(order);
 	}
 
@@ -47,13 +47,25 @@ public class OrderService implements IOrderService {
 	public void updateOrder(Orderr order) {
 		LocalTime current_time = LocalTime.now();
 		current_time = LocalTime.of(current_time.getHour(), current_time.getMinute());
-		order.setTime_out(current_time);
+		order.setTime_out(current_time);	
 		repository.saveAndFlush(order);
 	}
 
 	@Override
 	public void deleteOrder(int id) {
 		repository.deleteById(id);
+	}
+
+	@Override
+	public Orderr getLastestOrder() {
+		// TODO Auto-generated method stub
+		return repository.findTopByOrderByIdDesc();
+	}
+
+	@Override
+	public Orderr findByTableIdWithState(int table_id) {
+		// TODO Auto-generated method stub
+		return repository.findByTableIdWithState(table_id);
 	}
 
 }
