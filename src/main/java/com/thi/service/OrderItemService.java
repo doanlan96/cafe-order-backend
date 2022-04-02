@@ -35,7 +35,7 @@ public class OrderItemService implements IOrderItemService {
 	@Override
 	public void createOrderItem(Order_Item order_item) {
 		// TODO Auto-generated method stub
-		order_item.setQuantity(1);
+//		order_item.setQuantity(1);
 		repository.save(order_item);
 	}
 

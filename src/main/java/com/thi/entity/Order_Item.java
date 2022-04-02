@@ -20,6 +20,12 @@ public class Order_Item implements Serializable{
 	@Column(name="product_id", nullable = false)
 	private int product_id;
 	
+	@Column(name="product_name", nullable = false)
+	private String product_name;
+	
+	@Column(name="product_price", nullable = false)
+	private float product_price;	
+	
 	@Column(name="quantity", nullable = false)
 	private int quantity;
 
@@ -49,6 +55,23 @@ public class Order_Item implements Serializable{
 
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
+	}
+	
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+	public float getProduct_price() {
+		return product_price;
+	}
+
+	public void setProduct_price(float product_price) {
+		this.product_price = product_price;
 	}
 
 	public int getQuantity() {

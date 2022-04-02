@@ -32,8 +32,8 @@ public class ProductController {
 	private IProductService service;
 	
 	@GetMapping()
-	public Page<Product> getAllProducts(Pageable pageable) {
-		return service.getAllProducts(pageable);
+	public List<Product> getAllProducts() {
+		return service.getAllProducts();
 	}
 	
 	@GetMapping(value = "/{id}")

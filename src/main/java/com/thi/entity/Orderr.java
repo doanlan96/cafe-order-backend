@@ -31,13 +31,13 @@ public class Orderr implements Serializable {
 	@Column(name="table_id", nullable = false)
 	private int table_id;
 	
-	@Column(name = "sum", nullable = false)
+	@Column(name = "sum", nullable = true)
 	private float sum;
 	
-	@Column(name = "customer_pay", nullable = false)
+	@Column(name = "customer_pay", nullable = true)
 	private float customer_pay;
 	
-	@Column(name = "money_returned", nullable = false)
+	@Column(name = "money_returned", nullable = true)
 	private float money_returned;
 	
 	@Column(name = "user_id", nullable = false)
@@ -46,6 +46,9 @@ public class Orderr implements Serializable {
 	@Column(name = "payment_method", nullable = false)
 	private String payment_method;
 
+	@Column(name = "state", nullable = false)
+	private String state;
+	
 	public Orderr() {
 
 	}
@@ -136,6 +139,14 @@ public class Orderr implements Serializable {
 
 	public void setPayment_method(String payment_method) {
 		this.payment_method = payment_method;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	@Override

@@ -15,5 +15,9 @@ public interface IOrderService {
 	public void updateOrder(Orderr order);
 
 	public void deleteOrder(int id);
+	
+	public Orderr getLastestOrder();
+	
+	public Orderr findByTableIdWithState(int table_id);
 
 }
