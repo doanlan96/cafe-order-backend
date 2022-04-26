@@ -37,6 +37,11 @@ public class OrderController {
 	@GetMapping(value = "/tableid/{id}")
 	public Orderr getOrderByTableIDWithState(@PathVariable(name = "id") int table_id) {
 		return service.findByTableIdWithState(table_id);
+	}
+	
+	@GetMapping(value = "/form/{form}")
+	public List<Orderr> getOrdersByForm(@PathVariable(name = "form") String form) {
+		return service.findByForm(form);
 	}	
 	
 	@GetMapping(value = "/{id}")

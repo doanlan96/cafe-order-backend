@@ -19,5 +19,7 @@ public interface IOrderService {
 	public Orderr getLastestOrder();
 	
 	public Orderr findByTableIdWithState(int table_id);
+	
+	public List<Orderr> findByForm(String form);
 
 }
