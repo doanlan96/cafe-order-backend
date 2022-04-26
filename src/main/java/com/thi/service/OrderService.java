@@ -68,4 +68,10 @@ public class OrderService implements IOrderService {
 		return repository.findByTableIdWithState(table_id);
 	}
 
+	@Override
+	public List<Orderr> findByForm(String form) {
+		// TODO Auto-generated method stub
+		return repository.findByForm(form);
+	}
+
 }

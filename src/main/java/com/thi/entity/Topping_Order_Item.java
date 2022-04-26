@@ -20,8 +20,8 @@ public class Topping_Order_Item implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "order_item_id", nullable = false)
-	private int order_item_id;
+	@Column(name = "orderitemid", nullable = false)
+	private int orderitemid;
 	
 	@Column(name = "topping_id", nullable = false)
 	private int topping_id;
@@ -45,11 +45,11 @@ public class Topping_Order_Item implements Serializable {
 	}
 
 	public int getOrder_item_id() {
-		return order_item_id;
+		return orderitemid;
 	}
 
 	public void setOrder_item_id(int order_item_id) {
-		this.order_item_id = order_item_id;
+		this.orderitemid = order_item_id;
 	}
 
 	public int getTopping_id() {
@@ -78,7 +78,7 @@ public class Topping_Order_Item implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Topping_Order_Item [id=" + id + ", order_item_id=" + order_item_id + ", topping_id=" + topping_id
+		return "Topping_Order_Item [id=" + id + ", order_item_id=" + orderitemid + ", topping_id=" + topping_id
 				+ ", topping_name=" + topping_name + ", topping_price=" + topping_price + "]";
 	}
 	
